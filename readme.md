@@ -1,17 +1,20 @@
 Pirate Ship Wars 2
 ==================
-**Termy58** co-lead Programmer, co-owner
-With thanks to
+**Termy58** co-lead Programmer, co-owner.
+
 **Captainshaun** for help with creating new maps, cannon/helm models, and for fixing up some code.
 
 
 **PSW** 
+
 Original by **EmpV**
+
 **Metroid48** co-lead Programmer, co-owner
+
 **Termy58** co-lead Programmer, co-owner
-With thanks to
-**EmpV** for original PSW and help on map issues
+
 **Communist Pancake** updated for GMOD 13 compatiability
+
 An unknown (probably not very large) amount of work by **VertisticINC**
 
 
