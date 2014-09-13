@@ -1,0 +1,5 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "textures\Ship\sail\sail"
+	"$bumpmap" "textures\Ship\sail\sail_normal"
+}

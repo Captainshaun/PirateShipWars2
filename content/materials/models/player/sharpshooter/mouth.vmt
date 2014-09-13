@@ -1,0 +1,23 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models\player\generic_mouth_diffuse"
+	"$bumpMap" "models\player\generic_mouth_normal"
+	"$model" 1
+	"$phong" "1"
+	"$phongexponent" "25"
+	"$phongboost" ".25"	
+	"$phongfresnelranges"	"[.25 1 2]"
+	"$phongalbedotint" "1"	
+	"$halflambert" "1"
+
+	"Proxies"
+	{
+		"GrailVision"
+		{
+			"illum_min"		"0.0"
+			"illum_max"		"1.3"
+			"illum_exp"		"1.2"
+		}
+	}
+	
+}

@@ -1,0 +1,9 @@
+"UnlitGeneric"
+{
+	"$baseTexture" "gmod/SWEP/sabre_select"	
+
+	"$nolod" 			"1"
+	"$ignorez"		"1"
+	//"$vertexcolor" 		"1"
+	"$vertexalpha" 		"1"
+}

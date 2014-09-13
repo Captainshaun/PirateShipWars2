@@ -1,0 +1,223 @@
+ //====== Pirate Ship Wars =======
+//
+// Purpose: General game definition file (.fgd)
+//
+//=============================================================================
+ 
+@include "base.fgd"
+@include "halflife2.fgd"
+@include "garrysmod.fgd"
+ 
+@PointClass base(Targetname) = info_gamemode : "Defines the gamemode"
+[
+        GamemodeName(string) : "Gamemode Name" : "psw" : "The gamemode (by name) to use"       
+]
+
+@PointClass base(Targetname) = logic_pirateshipwars :
+        "Pirate Ship Wars Logic"
+[
+        output OnStartWarmup(void) : "Warmup, pre round"
+        output OnStartRound(void) : "Start the round"
+        output OnEndRound(void) : "End the round"
+        output OnBlueWins(void) : "Blue wins the game, called at the same time OnEndRound is"
+        output OnRedWins(void) : "Red wins the game, called at the same time OnEndRound is"
+]
+
+//---------------------------------
+//--Spawn Points
+//---------------------------------
+@PointClass base(PlayerClass, Angles, Parentname) studio("models/editor/playerstart.mdl") = psw_redspawn :
+        "Red spawn"
+[
+]
+ 
+@PointClass base(PlayerClass, Angles, Parentname) studio("models/editor/playerstart.mdl") = psw_bluespawn :
+        "Blue spawn"
+[
+]
+ 
+//---------------------------------
+//--Ships Cannons
+//---------------------------------
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannonbase.mdl") = psw_shipscannonbase :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannonbasesmall.mdl") = psw_shipscannonbasesmall :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannon.mdl") = psw_shipscannon :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannonsmall.mdl") = psw_shipscannonsmall :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+//---------------------------------
+//--Forts Cannons
+//---------------------------------
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannonbase.mdl") = psw_fortscannonbase :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannonbasesmall.mdl") = psw_fortscannonbasesmall :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannon.mdl") = psw_fortscannon :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/Frigate01/cannon/cannonsmall.mdl") = psw_fortscannonsmall :
+        "This entity spawns everything related to a single cannon"
+[
+]
+
+//---------------------------------
+//--Others Ships Entity's
+//---------------------------------
+@PointClass base(Targetname, Angles, Parentname) studio("models/weapons/w_keg/w_keg.mdl") = psw_barrel :
+        "The barrel which can disable the ship"
+[
+	// Inputs
+	input Kill(void) : "Removes this entity from the world."
+	input Remove(void) : "Set state of global to DEAD."
+	
+	// Outputs
+	output OnRemove(void) : "Fired whenever an entity is removed."
+	output OnKilled(void) : "Fired whenever an entity is removed."
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/frigate01/helm/helm.mdl") = psw_helm :
+        "The wheel which controls psw_thrusters"
+[
+        output SetSail(void) : "Command to raise sail"
+        output LowerSail(void) : "Command to lower sail"
+]
+
+//---------------------------------
+//--Unused
+//---------------------------------
+@PointClass base(PlayerClass, Angles, Parentname) studio("models/editor/playerstart.mdl") = psw_redbrig :
+        "Red brig"
+[
+]
+
+@PointClass base(PlayerClass, Angles, Parentname) studio("models/editor/playerstart.mdl") = psw_bluebrig :
+        "Blue brig"
+[
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/frigate01/shipsother/lantern01.mdl") = psw_lantern :
+        "Light the way"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+
+        modelchoice(choices) : "Lantern Model" : 0 =
+        [
+                1 : "lantern01"
+                2 : "lantern02"
+        ]
+]
+
+
+@PointClass base(Targetname, Angles, Parentname, ForceController) size(-8 -8 -8, 8 8 8) = psw_thruster_left :
+        "Left ship thruster, set parent as psw_helm"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]
+
+@PointClass base(Targetname, Angles, Parentname, ForceController) size(-8 -8 -8, 8 8 8) = psw_thruster_right :
+        "Right ship thruster, set parent as psw_helm"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]
+
+@PointClass base(Targetname, Angles, Parentname, ForceController) size(-8 -8 -8, 8 8 8) = psw_thruster_forward :
+        "Forward ship thruster, set parent as psw_helm"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]
+
+@PointClass base(Targetname, Angles, Parentname, ForceController) size(-8 -8 -8, 8 8 8) = psw_thruster_reverse :
+        "Reverse ship thruster, set parent as psw_helm"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]
+
+
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/frigate01/masts/frontmast.mdl") = psw_mastfront :
+        "Front sail"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/frigate01/masts/middlemast.mdl") = psw_mastmiddle :
+        "Middle sail"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]
+
+@PointClass base(Targetname, Angles, Parentname) studio("models/frigate01/masts/backmast.mdl") = psw_mastrear :
+        "Rear sail"
+[
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]
+
+@PointClass base(Targetname, Angles, Parentname) size(-8 -8 -8, 8 8 8) = psw_emitter :
+        "Emits sounds"
+[
+        sound(choices) : "Type of emitter" : 0 =
+        [
+                0 : "bell"
+                1 : "ship_left"
+                2 : "ship_right"
+        ]
+        team(choices) : "Pirate Team" : 0 =
+        [
+                1 : "Red Pirates"
+                2 : "Blue Pirates"
+        ]
+]

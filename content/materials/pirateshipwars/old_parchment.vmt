@@ -1,0 +1,9 @@
+"UnlitGeneric"
+{
+	"$basetexture" "PirateShipWars/old_parchment"
+	"$ignorez"		1
+	"$vertexalpha" "1"
+	"$vertexcolor" "1"
+	"$nolod" "1"
+}
+

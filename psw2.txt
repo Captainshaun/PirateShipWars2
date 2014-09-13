@@ -1,0 +1,7 @@
+"psw2"
+{
+	"base"			"base"
+	"title"			"Pirate Ship Wars 2"
+	"maps"			"^psw_"
+	"menusystem"	"1"
+}

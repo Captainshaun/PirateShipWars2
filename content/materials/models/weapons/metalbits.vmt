@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons\metalbits"
+	"$bumpmap" "models\weapons\metalbits_normal"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[.3 .3 .3]"
+	"$model" 1	
+	"$phong" "1"
+	"$phongexponent" "35"
+	"$phongboost" "3"	
+	"$phongfresnelranges"	"[.8 1 2]"
+	"$phongalbedotint" "0"	
+}

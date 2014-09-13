@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/player/skirmisher/skirmteeth"
+	//"$translucent" 1
+	"$alphatest" 1
+		"$halflambert" "1"
+}

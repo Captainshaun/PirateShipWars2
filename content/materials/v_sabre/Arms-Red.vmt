@@ -1,0 +1,10 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "common/sleeve/british_infantry_red"
+	"$bumpmap" "common/sleeve/british_infantry_normal"
+"$phong" "1"
+"$phongexponent" 33
+"$phongboost""10"
+"$phongfresnelranges""[0 0.5 1]"
+                "$halflambert"  1
+}

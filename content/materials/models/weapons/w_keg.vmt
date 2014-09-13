@@ -1,0 +1,9 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons\w_keg"
+	"$bumpMap" "models\weapons\w_keg_normal"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[.5 .5 .5]"
+	"$normalmapalphaenvmapmask" 1
+	"$model" 1
+}

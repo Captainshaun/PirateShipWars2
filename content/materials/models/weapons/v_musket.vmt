@@ -1,0 +1,29 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models\weapons/v_musket"
+	"$bumpMap" "models\weapons\v_musket_normal"
+	"$normalmapalphaenvmapmask" "1"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[.4 .4 .4]"
+	"$envmapfresnel" "1.1"
+	"$cooklighting" "1"
+	"$specroughness" "0"
+	"$specalbedotint" "0"
+	"$RTNLtexture"	"models\weapons\v_musket_rtnl"
+	"$specboost" "2"	
+	"$specfresnelranges"	"[0.3 0.6 0.9]"	
+
+	"PVK2_VertexLitGeneric"
+	{
+		"$baseTexture" "models\weapons/v_musket"
+		"$bumpMap" "models\weapons\v_musket_normal"
+		"$envmap" "env_cubemap"
+		"$normalmapalphaenvmapmask" 1
+		"$envmaptint" "[.1 .1 .1]"
+		"$phong" "1"
+		"$phongexponent" "40"
+		"$phongboost" "10"	
+		"$phongfresnelranges"	"[1 1 1]"
+		"$phongalbedotint" "1"	
+	}
+}

@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons\w_musket"
+	"$surfaceprop" "wood"
+	"$bumpMap" "models\weapons\w_musket_normal"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" 1
+	"$envmaptint" "[.5 .5 .5]"
+	"$phong" "1"
+	"$phongexponent" "20"
+	"$phongboost" "9"	
+	"$phongfresnelranges"	"[.5 1 1.5]"
+}

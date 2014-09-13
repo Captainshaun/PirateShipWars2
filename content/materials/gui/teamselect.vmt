@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture" "gui/teamselect"
+	"$nocull" 1
+	"$translucent" 1
+}

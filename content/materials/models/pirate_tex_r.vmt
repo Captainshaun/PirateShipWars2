@@ -1,0 +1,9 @@
+VertexLitGeneric
+{
+	"$basetexture"	"models/pirate_tex_r"
+	
+	"$nocull" 1 
+	 
+	
+	
+}

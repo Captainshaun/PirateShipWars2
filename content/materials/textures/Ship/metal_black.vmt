@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "textures/Ship/metal_black"
+	"$bumpMap" "textures/Ship/metal_black_nrm"
+	"$phong" "1"
+	"$phongexponent" "25"
+	"$phongboost" ".9"	
+	"$phongfresnelranges"	"[.5 1 2]"
+	"$phongalbedotint" "1"	
+	"$model" 1
+}
+

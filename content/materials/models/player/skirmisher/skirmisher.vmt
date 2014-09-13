@@ -1,0 +1,28 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/player/skirmisher/skirmisher"
+	"$translucent" 1
+	"$bumpMap" "models/player/skirmisher/skirmisher_normal"
+	"$alphatest" 1
+	"$halflambert" "1"
+
+	"$lightwarptexture"	"models\player\skirmisher\skirmisher_lightwarp"
+	"$cooklighting" "1"
+	"$specroughness" "0" //Set to 0 to enable usage of the Red channel as the roughness texel lookup
+	"$RTNLtexture"	"models\player\skirmisher\skirmisher_rtnl"
+	"$specboost" "0.8"	
+	"$specfresnelranges"	"[0.15 0.6 1.0]"
+	"$specalbedotint"	"1"
+
+	"$diffuseshadingtexture" "models\player\skirmisher\skirmisher_diffuseshading"
+
+	"$rimlight" "1"		
+	"$rimlightexponent" "20"	
+	"$rimlightboost" "0.9"
+
+	"$phong" "1"
+	"$phongexponent" "8"
+	"$phongboost" ".3"	
+	"$phongfresnelranges"	"[.25 .5 1.25]"
+	"$phongalbedotint" "1"	
+}

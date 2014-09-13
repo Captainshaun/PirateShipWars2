@@ -1,0 +1,13 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models\weapons/Flintlockpistol"
+	"$bumpMap" "models\weapons\Flintlockpistol_normal"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" 1
+	"$envmaptint" "[.15 .15 .15]"
+	"$phong" "1"
+	"$phongexponent" "36"
+	"$phongboost" ".25"	
+	"$phongfresnelranges"	"[1 1 1]"
+	"$phongalbedotint" "1"	
+}

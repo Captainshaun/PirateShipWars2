@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/weapons/ss_hands"
+	"$bumpmap"    "models/weapons/pvkii_hands_normal"
+	"$rtnltexture"    "models/weapons/pvkii_hands_rtnl"
+	"$lightwarptexture" "models/player/skin_lightwarp"
+
+	//"$envmap" "env_cubemap"
+	//"$envmaptint" "[.1 .1 .1]"
+	//"$normalmapalphaenvmapmask" "1"
+
+	"$cooklighting" "1"
+	"$specroughness" "0"
+	"$specalbedotint" "1"
+	"$specboost" ".4"
+	"$specfresnelranges" "[.5 1 1.5]" 
+
+	"$rimlight" "1"
+	"$rimlightexponent" "8"	
+	"$rimlightboost" "1"
+}

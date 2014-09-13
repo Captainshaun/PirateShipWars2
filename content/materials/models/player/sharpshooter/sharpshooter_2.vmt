@@ -1,0 +1,29 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/player/sharpshooter/sharpshooter_2"
+	"$bumpMap" "models/player/sharpshooter/sharpshooter_2_normal"
+	"$lightwarptexture" "models/player/sharpshooter/lightwarp_ss"
+	"$normalmapalphaenvmapmask" 0
+	"$envmaptint" "[0 0 0]"
+	"$alphatest" 1
+	"$cooklighting" "1"
+	"$specroughness" "0"
+	"$rtnltexture"	"models/player/sharpshooter/sharpshooter_2_rtnl"
+	"$specboost" "1"	
+	"$specfresnelranges"	"[.5 1 2]"
+	"$specalbedotint" "1"
+
+	"$rimlight" "1"		
+	"$rimlightexponent" "4"	
+	"$rimlightboost" "0.35"
+
+	"PVK2_VertexLitGeneric"
+	{
+		"$lightwarptexture" ""
+		"$phong" "1"
+		"$phongexponent" "12"
+		"$phongboost" ".08"	
+		"$phongfresnelranges"	"[.25 1 2]"
+		"$phongalbedotint" "1"
+	}
+}

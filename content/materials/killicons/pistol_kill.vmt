@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+	"$translucent" 1
+	"$basetexture" "deathnotify/pistol_kill"
+	"$vertexalpha" 1
+	"$ignorez" 1
+}

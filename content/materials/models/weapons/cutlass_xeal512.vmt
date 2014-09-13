@@ -1,0 +1,9 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models\weapons/cutlass_xeal"
+	"$envmap" "env_cubemap"
+	"$envmapmask" "models\weapons\cutlass_xeal_specmap"
+	"$envmaptint" "[.5 .5 .5]"
+ 	//"$envmapcontrast" 0.5
+	//"$envmapsaturation" 0.5
+}

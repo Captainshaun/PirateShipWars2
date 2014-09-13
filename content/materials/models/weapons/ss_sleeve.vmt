@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons/ss_sleeve"
+	"$bumpmap" "models\weapons/ss_sleeve_normal"
+	"$model" 1
+
+	"$cooklighting" "1"
+	"$specroughness" "0.8"
+	"$specboost" ".4"
+	"$specfresnelranges" "[.2 0.6 1.0]"
+
+	"$diffuseshadingtexture" "models\weapons\ss_sleeve_diffuse" 
+
+	"PVK2_VertexLitGeneric"
+	{
+		"$phong" "0"
+		"$phongexponent" "20"
+		"$phongboost" ".5"	
+		"$phongfresnelranges"	"[.5 1 1.5]"
+	}
+}

@@ -1,0 +1,10 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "v_sabre/Sabre"
+	"$bumpmap"	"v_sabre/Sabre_normal"
+"$phong" "1"
+"$phongexponent" 33
+"$phongboost""10"
+"$phongfresnelranges""[0 0.5 1]"
+                "$halflambert"  1
+}
