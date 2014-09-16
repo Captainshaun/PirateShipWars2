@@ -31,10 +31,13 @@ CreateClientConVar("psw_3rdperson", "0", true, true)
 CreateClientConVar("psw_endroundmusic", "1", true, true)
 CreateClientConVar("psw_displayroundinfo", "0", true, true)
 CreateClientConVar("psw_displaylives", "0", true, true)
+CreateClientConVar("psw_disablecannonsmoke", "0", true, true)
 
 RunConsoleCommand( "cl_pred_optimize", "1");
 
-PSW_CONTENT_ID = 124918666
+PSW_CONTENT_ID = 313668966
+PSW_EXTRAMAPSCONTENT_ID = 313561979
+
 function GM:PostDrawViewModel( vm, ply, weapon )
  
 	if ( !IsValid( weapon ) ) then return false end
@@ -69,13 +72,13 @@ local lives = ply:GetNWInt("lives")
 		--draw.SimpleText("Current XP: "..EXP, 'TargetID', 10, 10, Color(255,255,255))
 		--draw.SimpleText("Level: "..Level, 'TargetID', 10, 30, Color(255,255,255))
 		
-			if GetConVarNumber( "psw_enableplayerslives" ) == 1 and GetConVarNumber( "psw_displaylives" ) == 1 then
+			--[[if GetConVarNumber( "psw_enableplayerslives" ) == 1 and GetConVarNumber( "psw_displaylives" ) == 1 then
 				if ply:Team() == TEAM_BLUE || ply:Team() == TEAM_RED then
 					draw.WordBox( 1, ScrW()*0.015, ScrH()*0.86, "lives: "..LocalPlayer():GetNWInt("lives"),"pswsize12",Color(200,0,0,0),Color(255,255,255,255))  
 					draw.WordBox( 1, ScrW()*0.2, ScrH()*0.898, "Lives Left: "..lives,"pswsize12",Color(200,0,0,0),Color(255,255,255,255))
 					draw.WordBox( 1, ScrW()*0.2, ScrH()*0.925, "Lives Next round: "..GetConVarNumber("psw_playerslives"),"pswsize12",Color(200,0,0,0),Color(255,255,255,255))
 				end
-			end
+			end]]--
 			
 			--[[if GetConVarNumber( "psw_displayroundinfo" ) == 1 then
 				if ply:Team() == TEAM_BLUE || ply:Team() == TEAM_RED then
@@ -118,7 +121,7 @@ local lives = ply:GetNWInt("lives")
 				surface.SetTexture( tid2 )
 				surface.DrawTexturedRect( ScrW()*0.01, ScrH()*0.88, ScrW()*0.06, ScrH()*0.088 )
 				if LocalPlayer():Health() > 10 then
-					draw.RoundedBox( 10, ScrW()*0.0665, ScrH()*0.9, ( ScrW()*0.1255 * ( LocalPlayer():Health() / 100 ) ), ScrH()*0.029, Color( 130, 30, 30, 140 ) )
+					draw.RoundedBox( 10, ScrW()*0.0665, ScrH()*0.9, ( ScrW()*0.1255 * ( LocalPlayer():Health() / 100 ) ), ScrH()*0.029, Color( 30, 30, 130, 140 ) )
 					draw.RoundedBox( 10, ScrW()*0.064, ScrH()*0.898, ScrW()*0.13, ScrH()*0.033, Color( 20, 20, 20, 150 ) )
 					else --Added to prevent the bar from screwing
 					surface.SetFont("psw") 
@@ -128,26 +131,6 @@ local lives = ply:GetNWInt("lives")
 					draw.RoundedBox( 10, ScrW()*0.064, ScrH()*0.898, ScrW()*0.13, ScrH()*0.033, Color( 20, 20, 20, 150 ) )
 				end
 			end
-			
-			if LocalPlayer():Team() == TEAM_BLUE then
-				surface.SetDrawColor( 255, 255, 255, 255 )
-				local tid = surface.GetTextureID( 'VGUI/hud/blueblood' )
-				surface.SetTexture( tid )
-				surface.DrawTexturedRect( 20, ScrH() - 130, 312, 128 )
-				local tid2 = surface.GetTextureID( 'VGUI/hud/blueskull' )
-				surface.SetTexture( tid2 )
-				surface.DrawTexturedRect( 20, ScrH() - 130, 99, 90 )
-				if LocalPlayer():Health() > 10 then
-					draw.RoundedBox( 10, 110, ScrH() - 105, ( 210 * ( LocalPlayer():Health() / 100 ) ), 30, Color( 30, 30, 130, 140 ) )
-					draw.RoundedBox( 10, 105, ScrH() - 107.5, 220, 35, Color( 20, 20, 20, 150 ) )
-					else --Added to prevent the bar from screwing
-					surface.SetFont("psw") 
-					surface.SetTextPos( 110, ScrH() - 107.5 )
-					surface.SetTextColor( 170, 50, 50, 245 )
-					surface.DrawText( "Aye ye hit" ) --Piratey
-					draw.RoundedBox( 10, 105, ScrH() - 107.5, 220, 35, Color( 20, 20, 20, 150 ) )
-				end
-			end	
 		end
 			
 			if LocalPlayer():Team() == TEAM_SPECTATE then

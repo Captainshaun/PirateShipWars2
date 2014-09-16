@@ -5,7 +5,7 @@ resource.AddFile( "materials/PirateShipWars/old_parchment.vtf" )
 resource.AddFile( "materials/PirateShipWars/PSWlogo.vmt" )
 resource.AddFile( "materials/PirateShipWars/PSWlogo.vtf" )
 
---somkeeffects
+--smoke effects
 resource.AddFile( "materials/effects/muzzle01.vmt" )
 resource.AddFile( "materials/effects/muzzle01.vtf" )
 resource.AddFile( "materials/effects/smoke01.vmt" )
@@ -352,4 +352,7 @@ resource.AddFile( "sound/weapons/flcock_draw.wav" )
 resource.AddFile( "sound/weapons/flintlock-1.wav" )
 resource.AddFile( "sound/weapons/pistolreload.wav" )
 resource.AddFile( "sound/weapons/pistolshot.wav" )
-
+resource.AddFile( "sound/weapons/rifle/ssrifle_draw.wav" )
+resource.AddFile( "sound/weapons/rifle/ssrifle_fire1.wav" )
+resource.AddFile( "sound/weapons/rifle/ssrifle_holster.wav" )
+resource.AddFile( "sound/weapons/rifle/ssrifle_reload.wav" )

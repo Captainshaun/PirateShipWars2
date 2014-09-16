@@ -19,13 +19,19 @@ Original by **EmpV**
 An unknown (probably not very large) amount of work by **VertisticINC**
 
 
-Gmod thread: coming soon
+Gmod thread: http://facepunch.com/showthread.php?t=1424402
 
-Workshop: coming soon
+Workshop Content: http://steamcommunity.com/sharedfiles/filedetails/?id=313668966
 
 
 Changelog
 ---------
+**Version 1.1**
+ - reduced the cannon smoke fade out time.
+ - added an option in client side menu to remove the cannons smoke effect.
+ - fixed the pirate team health bar showing double.
+ - disabled the player lives system because it wasn't working and needs updating more.
+ 
 **Version 1.0**
  - Initial Pirate Ship Wars 2 Release.
  - New LUA Cannon with new model.

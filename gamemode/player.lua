@@ -3,7 +3,7 @@
 ---------------------------------
 function GM:PlayerDeath( Victim, Inflictor, Attacker )
 
-	if GetConVarNumber( "psw_enableplayerslives" ) == 1 then
+	--[[if GetConVarNumber( "psw_enableplayerslives" ) == 1 then
 		if Victim.lives < 1 then
 			Victim.canSpawn = false
 			local teamAlive = false
@@ -21,7 +21,7 @@ function GM:PlayerDeath( Victim, Inflictor, Attacker )
 	
 	local killadd = Victim:GetNWInt("kills") + 1
 	Victim:SetNWInt("lives",lives)
-	end
+	end]]--
 	
 	-- Don't spawn for at least 4 seconds 
 	Victim.NextSpawnTime = CurTime() + 4
@@ -96,7 +96,7 @@ function enableSpawning()
 	GAMEMODE.round_state = ROUND_ACTIVE
 	for k,v in pairs(player.GetAll()) do
 		v.canSpawn = true
-		v.lives = GetConVarNumber("psw_playerslives")
+		--v.lives = GetConVarNumber("psw_playerslives")
 		v:KillSilent( ) 
 	end
 end
@@ -107,8 +107,8 @@ function GM:PlayerInitialSpawn( ply )
 	--ply:LoadPts()
 	--MsgN ( 'Points have been Loaded!')
 	
-	ply:SetNWInt("lives",GetConVarNumber("psw_playerslives"))
-	ply.lives = GetConVarNumber("psw_playerslives")
+	--ply:SetNWInt("lives",GetConVarNumber("psw_playerslives"))
+	--ply.lives = GetConVarNumber("psw_playerslives")
 	
   	if (GAMEMODE.round_state == ROUND_ACTIVE) then
   		ply.canSpawn = true

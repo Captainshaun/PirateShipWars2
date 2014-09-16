@@ -1,7 +1,7 @@
 function EFFECT:Init(data)
 	self.EndSize1=24
 	self.EndSize2=48
-	self.EndTime=4.5
+	self.EndTime=0.5
 	
 	self.Forward = data:GetNormal()
 	self.Angle = self.Forward:Angle()
@@ -14,19 +14,21 @@ function EFFECT:Init(data)
 		local delay=0.014
 		local t=delay*i
 		local vParticle=vPos+vStartVel*t
-		local particle=emitter:Add("effects/smoke0" .. math.random(1,2),vParticle) 
-		particle:SetLifeTime(t);
-		particle:SetVelocity(Vector(math.random(-1,1),math.random(-1,1),math.random(-1,1)):GetNormal()*3)--SPREAD
-		particle:SetDieTime(self.EndTime) 
-		particle:SetStartAlpha(math.Rand(75,200)) 
-		particle:SetStartSize(math.Rand(30,36)) 
-		particle:SetEndSize(math.Rand(self.EndSize1,self.EndSize2)) 
-		particle:SetRoll(math.Rand(-0.1,0.1))
-		particle:SetRollDelta(math.Rand(-0.25,0.25));
-		particle:SetColor(200,200,210) 
-		self.EndSize1=self.EndSize1+14
-		self.EndSize2=self.EndSize2+18
-		self.EndTime=self.EndTime+0.23
+		if GetConVarNumber("psw_disablecannonsmoke")==0 then
+			local particle=emitter:Add("effects/smoke0" .. math.random(1,2),vParticle) 
+			particle:SetLifeTime(t);
+			particle:SetVelocity(Vector(math.random(-1,1),math.random(-1,1),math.random(-1,1)):GetNormal()*3)--SPREAD
+			particle:SetDieTime(self.EndTime) 
+			particle:SetStartAlpha(math.Rand(75,200)) 
+			particle:SetStartSize(math.Rand(30,36)) 
+			particle:SetEndSize(math.Rand(self.EndSize1,self.EndSize2)) 
+			particle:SetRoll(math.Rand(-0.1,0.1))
+			particle:SetRollDelta(math.Rand(-0.25,0.25));
+			particle:SetColor(200,200,210) 
+			self.EndSize1=self.EndSize1+14
+			self.EndSize2=self.EndSize2+18
+			self.EndTime=self.EndTime+0.23
+		end
 		
 		local particle = emitter:Add("sprites/heatwave", vParticle)
 		particle:SetVelocity(80*self.Forward + 20*VectorRand())

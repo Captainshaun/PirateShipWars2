@@ -330,7 +330,7 @@ function set_team(ply)
 	OpenWorkshopButton:SetPos(130, 80)
 	OpenWorkshopButton:SetText('Install Content')
 	OpenWorkshopButton:SetFont("psw")
-	OpenWorkshopButton:SetDrawBackground(false)
+	--OpenWorkshopButton:SetDrawBackground(false)
 	OpenWorkshopButton.DoClick = function() steamworks.ViewFile(PSW_CONTENT_ID) end
 
 	OpenWorkshopExtraMaps = vgui.Create('DButton')
@@ -403,12 +403,12 @@ function Options(ply)
     CategoryContentTwo:SizeToContents()
 	TestingForm:AddItem( CategoryContentTwo )]]--
 	
-	local CategoryContentThree = vgui.Create( "DCheckBoxLabel", TabOne )
+	--[[local CategoryContentThree = vgui.Create( "DCheckBoxLabel", TabOne )
 	--CategoryContentThree:SetPos(0,70)
     CategoryContentThree:SetText( "Display lives left (WIP Only Works If The Owner/Admin Has Enable Lives System)" )
     CategoryContentThree:SetConVar( "psw_displaylives" )
     CategoryContentThree:SizeToContents()
-	TestingForm:AddItem( CategoryContentThree )
+	TestingForm:AddItem( CategoryContentThree )]]--
 	
 	local TestingForm2 = vgui.Create( "DForm", TabOne )
 	--TestingForm2:SetPos( 25, 50 )
@@ -433,6 +433,13 @@ function Options(ply)
     CategoryContentFive:SetConVar( "psw_endroundmusic" )
     CategoryContentFive:SizeToContents()
 	TestingForm2:AddItem( CategoryContentFive )
+	
+	local CategoryContentsix = vgui.Create( "DCheckBoxLabel", TabOne )
+	--CategoryContentsix:SetPos(0,90)
+    CategoryContentsix:SetText( "Disable Cannon Smoke" )
+    CategoryContentsix:SetConVar( "psw_disablecannonsmoke" )
+    CategoryContentsix:SizeToContents()
+	TestingForm2:AddItem( CategoryContentsix )
 	
 	PropertySheet:AddSheet( "Client Options", TabOne, "icon16/page_edit.png", false, false, "Client Options" )
 --//End of Tab One options
@@ -545,7 +552,7 @@ function Options(ply)
     CategoryContentFour:SizeToContents()
 	TestingForm:AddItem( CategoryContentFour )
 	
-	local Enableplayerslives = vgui.Create( "DCheckBoxLabel"  )
+	--[[local Enableplayerslives = vgui.Create( "DCheckBoxLabel"  )
     Enableplayerslives:SetText( "Enable Players Lives System (WIP)" )
 	Enableplayerslives:SetTextColor(Color(255,255,255))
 	if GetConVarNumber("psw_enableplayerslives") == 1 then
@@ -565,7 +572,7 @@ function Options(ply)
 		end
 	end
     Enableplayerslives:SizeToContents()
-	TestingForm:AddItem( Enableplayerslives )
+	TestingForm:AddItem( Enableplayerslives )]]--
 	
 	local CategoryContentFive = vgui.Create( "DNumSlider" )
     CategoryContentFive:SetText( "Players Lives (On Next Round)" )
