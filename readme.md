@@ -21,11 +21,21 @@ An unknown (probably not very large) amount of work by **VertisticINC**
 
 Gmod thread: http://facepunch.com/showthread.php?t=1424402
 
+Workshop Gamemode: http://steamcommunity.com/sharedfiles/filedetails/?id=313671383
 Workshop Content: http://steamcommunity.com/sharedfiles/filedetails/?id=313668966
+Workshop Entities For Sandbox: http://steamcommunity.com/sharedfiles/filedetails/?id=319299625
 
+Mapping Tools: https://github.com/Captainshaun/PirateShipWars2MappingTools
 
 Changelog
 ---------
+**Version 1.1.1**
+ - Fixed player being able to use cannon after dying.
+ - Fixed ship being able to move when sinking.
+ - Fixed some kill icons.
+ - Added Zoom to cannons, helm and weapons.
+ - Reduced content about 18mb by removing unused things.
+ 
 **Version 1.1**
  - reduced the cannon smoke fade out time.
  - added an option in client side menu to remove the cannons smoke effect.

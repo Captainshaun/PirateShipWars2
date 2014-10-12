@@ -1,7 +1,6 @@
 SWEP.Weight				= 5
 SWEP.AutoSwitchTo			= false
 SWEP.AutoSwitchFrom			= false
-SWEP.Spawnable				= true
 SWEP.ViewModelFlip			= false
 SWEP.Primary.ClipSize			= 1
 
@@ -17,13 +16,6 @@ function SWEP:CanPrimaryAttack()
 	end
 
 	if ( self.Owner:WaterLevel() > 0 ) then
-		return false
-	end
-	if (SERVER) then
-		if ( self.Owner.UsingCannon == 1 ) then
-			return false
-		end
-	elseif (UsingCannon) then
 		return false
 	end
 

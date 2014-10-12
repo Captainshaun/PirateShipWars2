@@ -2,10 +2,11 @@ AddCSLuaFile()
 
 ENT.Type 			= "anim"
 ENT.Base 			= "base_anim"
-ENT.PrintName		= "Forts Cannon Small"
+ENT.PrintName		= "Forts Cannon Only Small"
 ENT.Author			= "Thomas Hansen"
+ENT.Category 		= "Pirate Ship Wars 2"
 
-ENT.Spawnable			= true
+ENT.Spawnable			= false
 ENT.AdminSpawnable		= true
 ENT.NextAttack = CurTime()
 ENT.LastThink = CurTime()
@@ -38,7 +39,7 @@ if (SERVER) then
 	
 	function ENT:Think()
 	local owner = self:GetOwner()
-	if owner:IsPlayer() then
+	if owner:IsPlayer() && owner:Alive() then
 
 		local ownerpos = owner:GetPos()
 		local cannonpos = self:GetPos()
@@ -115,6 +116,27 @@ if (SERVER) then
 				end
 			end
 		end
+		
+		if owner:KeyDown(IN_ATTACK2) then
+			if(ScopeLevel == 0) then
+				if(SERVER) then
+					self.Owner:SetFOV( 45, 0 )
+				end	
+				ScopeLevel = 1
+				else if(ScopeLevel == 1) then
+					if(SERVER) then
+						self.Owner:SetFOV( 25, 0 )
+					end	
+					ScopeLevel = 2
+				else
+					if(SERVER) then
+						self.Owner:SetFOV( 0, 0 )
+					end		
+				ScopeLevel = 0
+				end
+			end
+		end
+		
 	end
 
 	if self:GetAngles() != self:GetParent():GetAngles() then

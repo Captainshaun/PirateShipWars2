@@ -12,7 +12,7 @@ include("rtv/cl_rtv.lua")
 include("cl_scoreboard.lua")
 include("cl_dermaskin.lua")
 include("cl_deathnotice.lua")
-include("sh_points.lua")
+--include("sh_points.lua")
 
 ---------------------------------
 --Language additions
@@ -22,6 +22,14 @@ language.Add( "env_explosion", "Ship Explosion" )
 language.Add( "func_breakable", "Ship" )
 language.Add( "worldspawn", "Ship" )
 language.Add( "trigger_hurt", "Davy Jones Locker" )
+
+---------------------------------
+--Kill Icon
+---------------------------------
+killicon.Add( "func_physbox", "killicons/ship", Color(255,255,255,255))
+killicon.Add( "func_breakable", "killicons/ship", Color(255,255,255,255))
+killicon.Add( "worldspawn", "killicons/sent_cball_killicon", Color(255,255,255,255))
+killicon.Add( "env_explosion", "HUD/keg", Color(255,255,255,255))
 
 ---------------------------------
 --ClientConVar
@@ -100,6 +108,10 @@ local lives = ply:GetNWInt("lives")
 				local tid2 = surface.GetTextureID( 'VGUI/hud/Skull' )
 				surface.SetTexture( tid2 )
 				surface.DrawTexturedRect( ScrW()*0.01, ScrH()*0.88, ScrW()*0.06, ScrH()*0.088 )
+				if LocalPlayer():Armor() > 0 then
+					draw.RoundedBox( 10, ScrW()*0.0665, ScrH()*0.86, ( ScrW()*0.1255 * ( LocalPlayer():Armor() / 100 ) ), ScrH()*0.029, Color( 30, 30, 130, 140 ) )
+					draw.RoundedBox( 10, ScrW()*0.064, ScrH()*0.858, ScrW()*0.13, ScrH()*0.033, Color( 20, 20, 20, 150 ) )
+				end
 				if LocalPlayer():Health() > 10 then
 					draw.RoundedBox( 10, ScrW()*0.0665, ScrH()*0.9, ( ScrW()*0.1255 * ( LocalPlayer():Health() / 100 ) ), ScrH()*0.029, Color( 130, 30, 30, 140 ) )
 					draw.RoundedBox( 10, ScrW()*0.064, ScrH()*0.898, ScrW()*0.13, ScrH()*0.033, Color( 20, 20, 20, 150 ) )
@@ -120,6 +132,10 @@ local lives = ply:GetNWInt("lives")
 				local tid2 = surface.GetTextureID( 'VGUI/hud/blueskull' )
 				surface.SetTexture( tid2 )
 				surface.DrawTexturedRect( ScrW()*0.01, ScrH()*0.88, ScrW()*0.06, ScrH()*0.088 )
+				if LocalPlayer():Armor() > 0 then
+					draw.RoundedBox( 10, ScrW()*0.0665, ScrH()*0.86, ( ScrW()*0.1255 * ( LocalPlayer():Armor() / 100 ) ), ScrH()*0.029, Color( 30, 30, 130, 140 ) )
+					draw.RoundedBox( 10, ScrW()*0.064, ScrH()*0.858, ScrW()*0.13, ScrH()*0.033, Color( 20, 20, 20, 150 ) )
+				end
 				if LocalPlayer():Health() > 10 then
 					draw.RoundedBox( 10, ScrW()*0.0665, ScrH()*0.9, ( ScrW()*0.1255 * ( LocalPlayer():Health() / 100 ) ), ScrH()*0.029, Color( 30, 30, 130, 140 ) )
 					draw.RoundedBox( 10, ScrW()*0.064, ScrH()*0.898, ScrW()*0.13, ScrH()*0.033, Color( 20, 20, 20, 150 ) )

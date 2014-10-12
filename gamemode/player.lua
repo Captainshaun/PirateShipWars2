@@ -85,6 +85,12 @@ function GM:PlayerDeath( Victim, Inflictor, Attacker )
 	
 end 
 
+--Player Death Hook
+function OverrideDeathSound()
+	return true
+end
+hook.Add("PlayerDeathSound", "OverrideDeathSound", OverrideDeathSound)
+
 --[[local function OnNPCKilled( victim, killer, weapon )
 	killer:AddEXP(5)
 end
@@ -243,6 +249,7 @@ function GM:PlayerSetModel( ply )
 	end
 	if ply:Team() == TEAM_RED then
 		ply:SetModel( "models/player/sharpshooter/sharpshooter.mdl" )
+		--ply:SetModel( "models/redcoat" .. math.random(1,9) .. "pm.mdl" )
 	end
  
 end
@@ -279,6 +286,15 @@ function GM:PlayerNoClip( ply )
 		return true
 	end
 end
+
+--[[local function ShouldCollideTestHook( ent1, ent2 )
+ 
+	if ( ent1:IsPlayer() and ent2:IsPlayer() ) then
+		return false //Returning false stops the entities from colliding
+	end 
+	-- DO NOT RETURN FALSE HERE OR YOU WILL FORCE EVERY OTHER ENTITY NOT TO COLLIDE
+end
+hook.Add( "ShouldCollide", "ShouldCollideTestHook", ShouldCollideTestHook )]]--
 
 --Disable Water Damage
 hook.Add("PlayerShouldTakeDamage", "No trigger_hurt", function(ply, attacker)

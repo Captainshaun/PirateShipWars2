@@ -20,7 +20,7 @@ end
 SWEP.HoldType = "melee"
 SWEP.ViewModel = "models/sabre/v_sabre_a.mdl"
 SWEP.WorldModel = "models/sabre/w_sabre.mdl"
-SWEP.Category 			= "PSW Weapons"                					
+SWEP.Category 			= "Pirate Ship Wars 2"                					
 SWEP.AdminSpawnable 	= true                          		
 SWEP.UseHands			= true									
 SWEP.AutoSwitchTo 		= true                           		

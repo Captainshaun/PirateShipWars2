@@ -17,7 +17,7 @@ end
 SWEP.HoldType = "melee"
 SWEP.ViewModel = "models/weapons/cutlass2.mdl"
 SWEP.WorldModel = "models/weapons/w_cutlass2/w_cutlass2.mdl"
-SWEP.Category 			= "PSW Weapons"                					
+SWEP.Category 			= "Pirate Ship Wars 2"                					
 SWEP.AdminSpawnable 	= true                          		
 SWEP.UseHands			= true									
 SWEP.AutoSwitchTo 		= true                           		

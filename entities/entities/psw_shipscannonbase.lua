@@ -2,15 +2,25 @@ AddCSLuaFile()
 
 ENT.Type 			= "anim"
 ENT.Base 			= "base_anim"
-ENT.PrintName		= "Ships Cannon base"
+ENT.PrintName		= "Ships Cannon"
 ENT.Author			= "Thomas Hansen"
 ENT.Model 			= "models/frigate01/cannon/cannonbase.mdl"
+ENT.Category 		= "Pirate Ship Wars 2"
 
 ENT.Spawnable			= true
 ENT.AdminSpawnable		= true
-ENT.Category 			= "PSW Weapons"
 
 if (SERVER) then
+
+	function ENT:SpawnFunction( ply, tr, ClassName )
+		if (  !tr.Hit ) then return end
+		local SpawnPos = tr.HitPos + tr.HitNormal * 16
+		local ent = ents.Create( ClassName )
+		ent:SetPos( SpawnPos )
+		ent:Spawn()
+		ent:Activate()
+		return ent
+	end
 
 	function ENT:Initialize()
 		self:SetModel( self.Model )
@@ -28,7 +38,6 @@ if (SERVER) then
 		cannon:SetAngles( cannonangle )
 		cannon:Spawn()
 		cannon:SetParent( self )
-
 	end
 
 	function ENT:Use( ply, caller )

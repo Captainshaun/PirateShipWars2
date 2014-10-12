@@ -19,7 +19,6 @@ include("shared.lua")
 include("util.lua")
 include("player.lua")
 include("rounds.lua")
-include("mapcycle.lua")
 include("helm.lua")
 include("explosion.lua")
 include("rtv/config.lua")
@@ -146,10 +145,6 @@ function GM:EntityKeyValue( ent, key, val )
 		end
 	end]]--
 end
-
---[[concommand.Add( "psw_weaponSelect",function( ply, cmd, args )
-    ply:SelectWeapon( args[1] )
-end )]]--
 
 --Spawns ships at map/round start
 function GM:Think() --gamerulesThink()
@@ -298,7 +293,7 @@ function CountDown(v)
 	if shipdata[v].n == 30 then
 		canSpawn=false
 	end
-	if shipdata[v].n == 7 && shipdata[v].sinking then
+	--[[if shipdata[v].n == 7 && shipdata[v].sinking then
 		for k,v in pairs(player.GetAll()) do
 			v:StripWeapons()
 			v:Spectate(OBS_MODE_ROAMING)
@@ -309,7 +304,7 @@ function CountDown(v)
 	end
 	if shipdata[v].n == 1 then
 		newRound()
-	end	
+	end]]--
 	
 	shipdata[v].n = shipdata[v].n - 1
 	
@@ -346,8 +341,13 @@ function GM:EntityTakeDamage( target, dmginfo )
 	local caller = dmginfo:GetInflictor()
 	local attacker = dmginfo:GetAttacker()
 	local amount = dmginfo:GetDamage()
+	
+	if target:IsPlayer() then return false end
+	
+	local ent = target:GetPhysicsObject()
+	owner = findpartowner(target)
 
-	if (caller:GetClass() == "psw_ballbearing") || (caller:GetClass() == "psw_grenade") then
+	if (caller:GetClass() == "psw_ballbearing") then
 		if target:IsPlayer() then
 			dmginfo:ScaleDamage(2)
 			dmginfo:SetAttacker(caller:GetOwner())
@@ -370,11 +370,39 @@ function GM:EntityTakeDamage( target, dmginfo )
 			return false
 		end
 	end
-		
-	local ent = target:GetPhysicsObject()
-	owner = findpartowner(target)
 	
 	if owner then
+		if target:GetName() == "ship" .. owner .. "mast1" then
+			if (caller:GetClass() == "func_physbox") or (caller:GetClass() == "func_breakable") or (caller:GetClass() == "psw_cannonball") && ents.FindByName( "ship" .. owner .. "weldmast1" )[1] then
+				if ents.FindByName( "ship" .. owner .. "weldmast1" )[1] then
+				   ents.FindByName( "ship" .. owner .. "weldmast1" )[1]:Fire("Break", "", 1)
+				end
+			end
+		end
+		if target:GetName() == "ship" .. owner .. "mast2" then 
+			if (caller:GetClass() == "func_physbox") or (caller:GetClass() == "func_breakable") or (caller:GetClass() == "psw_cannonball")&& ents.FindByName( "ship" .. owner .. "weldmast2" )[1] then
+				if ents.FindByName( "ship" .. owner .. "weldmast2" )[1] then
+				   ents.FindByName( "ship" .. owner .. "weldmast2" )[1]:Fire("Break", "", 1)
+				end
+			end
+		end
+		
+		if target:GetName() == "ship" .. owner .. "mast3" then
+			if (caller:GetClass() == "func_physbox") or (caller:GetClass() == "func_breakable") or (caller:GetClass() == "psw_cannonball") && ents.FindByName( "ship" .. owner .. "weldmast3" )[1] then
+				if ents.FindByName( "ship" .. owner .. "weldmast3" )[1] then
+				   ents.FindByName( "ship" .. owner .. "weldmast3" )[1]:Fire("Break", "", 1)
+				end
+			end
+		end
+	
+		if string.find(target:GetName(), "ship") then
+			if ent && ent:GetMass()>amount+5000 then
+				ent:SetMass(ent:GetMass()-amount)
+			else
+				ent:SetMass(5000)
+			end
+		end
+		
 		if caller:GetClass() == "psw_cannonball" then
 			if caller:GetOwner():IsPlayer() then
 				if owner == caller:GetOwner():Team() then
@@ -386,35 +414,13 @@ function GM:EntityTakeDamage( target, dmginfo )
 			dmginfo:ScaleDamage(0)
 			return dmginfo
 		end
-		
-		if target:GetName() == "ship" .. owner .. "mast1" then 
-			if (caller:GetClass() == "psw_cannonball") && ents.FindByName( "ship" .. owner .. "weldmast1" )[1] then
-				ents.FindByName( "ship" .. owner .. "weldmast1" )[1]:Fire("Break", "", 1)
-				--timer.Simple(40, function() masts(mastid, owner) end)
-				--Msg ("ship" .. owner .. "mast1 hit")
-			end
-		end
-		if target:GetName() == "ship" .. owner .. "mast2" then
-			if (caller:GetClass() ==  "psw_cannonball") && ents.FindByName( "ship" .. owner .. "weldmast2" )[1] then
-				ents.FindByName( "ship" .. owner .. "weldmast2" )[1]:Fire("Break", "", 1)
-				--timer.Simple(40, function() masts(mastid, owner) end)
-				--Msg ("ship" .. owner .. "mast2 hit")
-			end
-		end
-		if target:GetName() == "ship" .. owner .. "mast3" then
-			if (caller:GetClass() == "psw_cannonball") && ents.FindByName( "ship" .. owner .. "weldmast3" )[1] then
-				ents.FindByName( "ship" .. owner .. "weldmast3" )[1]:Fire("Break", "", 1)
-				--timer.Simple(40, function() masts(mastid, owner) end)
-				--Msg ("ship" .. owner .. "mast3 hit")
-			end
-		end
 	end
 	
 	if string.find(target:GetName(), "ship") then
-		if ent && ent:GetMass()>amount+5 then
+		if ent && ent:GetMass()>amount+5000 then
 			ent:SetMass(ent:GetMass()-amount)
 		else
-			ent:SetMass(5)
+			ent:SetMass(5000)
 		end
 		sink(owner)
 	end
@@ -461,7 +467,7 @@ function winner(t)
 			end)	
 		end)
 		
-	else -- If the team win by kill the other team
+	--[[else -- If the team win by kill the other team
 	
 		kill = timer.Create("kill", 5, 1, function()
 			for k,v in pairs(player.GetAll()) do
@@ -478,7 +484,7 @@ function winner(t)
 			timer.Simple(0.1, function()
 				spawnships();
 			end)	
-		end)
+		end)]]--
 	end
 end
 

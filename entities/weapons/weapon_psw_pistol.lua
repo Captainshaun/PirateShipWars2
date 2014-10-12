@@ -15,7 +15,7 @@ end
 SWEP.HoldType			= "pistol" --maybe server-only
 SWEP.ViewModel			= "models/weapons/pistol.mdl"
 SWEP.WorldModel			= "models/weapons/w_pistol/w_pistol.mdl"
-SWEP.Category 			= "PSW Weapons"                					
+SWEP.Category 			= "Pirate Ship Wars 2"                					
 SWEP.AdminSpawnable 	= true                          		
 SWEP.UseHands			= true									
 SWEP.AutoSwitchTo 		= true                           		
@@ -76,6 +76,10 @@ function SWEP:Reload()
 end
 
 function SWEP:Deploy()
+	ScopeLevel = 0
+	self.Owner:SetFOV( 0, 0 )
+	self.Weapon:SetNetworkedBool( "Ironsights", false )
+
 	self.Weapon:SendWeaponAnim(ACT_VM_DRAW)
 	self.Weapon:EmitSound("weapons/flcock_draw.wav")
 		self.Owner:ViewPunch( Angle( 1, 0, -1 ) )
@@ -83,6 +87,10 @@ function SWEP:Deploy()
 end
 
 function SWEP:Holster()
+	ScopeLevel = 0
+	self.Owner:SetFOV( 0, 0 )
+	self.Weapon:SetNetworkedBool( "Ironsights", false )
+	
 	self.Weapon:EmitSound("weapons/flcock_draw.wav")
 	return true
 end
@@ -112,3 +120,106 @@ function SWEP:CanPrimaryAttack()
 	return true
 
 end
+
+local IRONSIGHT_TIME = 0.25
+
+function SWEP:GetViewModelPosition( pos, ang )
+
+	if ( !self.IronSightsPos ) then return pos, ang end
+
+	local bIron = self.Weapon:GetNetworkedBool( "Ironsights" )
+	
+	if ( bIron != self.bLastIron ) then
+		self.bLastIron = bIron 
+		self.fIronTime = CurTime()
+		
+		if ( bIron ) then 
+			self.SwayScale 	= 0.3
+			self.BobScale 	= 0.1
+		else 
+			self.SwayScale 	= 1.0
+			self.BobScale 	= 1.0
+		end
+	end
+	
+	local fIronTime = self.fIronTime or 0
+
+	if ( !bIron && fIronTime < CurTime() - IRONSIGHT_TIME ) then 
+		return pos, ang 
+	end
+	
+	local Mul = 1.0
+	
+	if ( fIronTime > CurTime() - IRONSIGHT_TIME ) then
+		Mul = math.Clamp( (CurTime() - fIronTime) / IRONSIGHT_TIME, 0, 1 )
+		if (!bIron) then Mul = 1 - Mul end
+	end
+
+	local Offset = self.IronSightsPos
+	
+	if ( self.IronSightsAng ) then
+		ang = ang * 1
+		ang:RotateAroundAxis( ang:Right(), 		self.IronSightsAng.x * Mul )
+		ang:RotateAroundAxis( ang:Up(), 		self.IronSightsAng.y * Mul )
+		ang:RotateAroundAxis( ang:Forward(), 	self.IronSightsAng.z * Mul )
+	end
+	
+	local Right 	= ang:Right()
+	local Up 		= ang:Up()
+	local Forward 	= ang:Forward()
+
+	pos = pos + Offset.x * Right * Mul
+	pos = pos + Offset.y * Forward * Mul
+	pos = pos + Offset.z * Up * Mul
+
+	return pos, ang
+	
+end
+
+function SWEP:SetIronsights( b )
+	self.Weapon:SetNetworkedBool( "Ironsights", b )
+end
+
+SWEP.NextSecondaryAttack = 0
+function SWEP:SecondaryAttack()
+
+	if ( !self.IronSightsPos ) then return end
+	if ( self.NextSecondaryAttack > CurTime() ) then return end
+	
+	bIronsights = !self.Weapon:GetNetworkedBool( "Ironsights", false )
+	
+	self:SetIronsights( bIronsights )
+	
+	self.NextSecondaryAttack = CurTime() + 0.3
+	
+	if(ScopeLevel == 0) then
+		if(SERVER) then
+			self.Owner:SetFOV( 35, 0 )
+		end
+ 		ScopeLevel = 1
+	else
+		if(SERVER) then
+			self.Owner:SetFOV( 0, 0 )
+		end
+		ScopeLevel = 0
+	end
+
+end
+
+function SWEP:OnRestore()
+
+	self.NextSecondaryAttack = 0
+	self:SetIronsights( false )
+	
+end
+
+SWEP.Primary.Cone = 0.02
+
+SWEP.IronSightsPos = Vector (-8.5, 6, 1.5)
+SWEP.IronSightsAng = Vector (-2, -11.8, -3)
+
+--SWEP.IronSightsPos = Vector (-8.5, 6, 1.5)
+--SWEP.IronSightsAng = Vector (-1, -11.8, -3)
+
+--SWEP.IronSightsPos = Vector (-8.1, 6, 1.5)
+--SWEP.IronSightsAng = Vector (-1, -11, -2)

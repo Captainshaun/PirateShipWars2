@@ -14,7 +14,7 @@ SWEP.Base = "weapon_pswgunbase"
 SWEP.HoldType				= "shotgun" --maybe server-only
 SWEP.ViewModel				= "models/weapons/musket.mdl"
 SWEP.WorldModel				= "models/weapons/w_musket/w_musket.mdl"
-SWEP.Category 			= "PSW Weapons"                					
+SWEP.Category 			= "Pirate Ship Wars 2"                					
 SWEP.AdminSpawnable 	= true                          		
 SWEP.UseHands			= true									
 SWEP.AutoSwitchTo 		= true                           		
@@ -38,6 +38,9 @@ SWEP.Secondary.Automatic		= false
 SWEP.Secondary.Ammo			= "none"
 
 function SWEP:PrimaryAttack()
+	ScopeLevel = 0
+	self.Owner:SetFOV( 0, 0 )
+	self.Weapon:SetNetworkedBool( "Ironsights", false )
  
 	if ( !self:CanPrimaryAttack() ) then return end
 	self.Weapon:SetNextPrimaryFire(CurTime() + 0.5)
@@ -62,6 +65,12 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:Reload()
+	ScopeLevel = 0
+	if(SERVER) then
+		self.Owner:SetFOV( 0, 0 )
+	end
+	self.Weapon:SetNetworkedBool( "Ironsights", false )
+	
 	if self.ReloadingTime and CurTime() <= self.ReloadingTime then return end
  
 	if ( self:Clip1() < self.Primary.ClipSize and self.Owner:GetAmmoCount( self.Primary.Ammo ) > 0 ) then
@@ -75,6 +84,12 @@ function SWEP:Reload()
 end
 
 function SWEP:Deploy()
+	ScopeLevel = 0
+	if(SERVER) then
+		self.Owner:SetFOV( 0, 0 )
+	end
+	self.Weapon:SetNetworkedBool( "Ironsights", false )
+
 	self.Weapon:SendWeaponAnim(ACT_VM_DRAW)
 	self.Weapon:EmitSound("weapons/rifle/ssrifle_draw.wav")
 		self.Owner:ViewPunch( Angle( 1, 0, -1 ) )
@@ -82,6 +97,12 @@ function SWEP:Deploy()
 end
 
 function SWEP:Holster()
+	ScopeLevel = 0
+	if(SERVER) then
+		self.Owner:SetFOV( 0, 0 )
+	end
+	self.Weapon:SetNetworkedBool( "Ironsights", false )
+	
 	self.Weapon:EmitSound("weapons/rifle/ssrifle_holster.wav")
 	return true
 end
@@ -186,6 +207,18 @@ function SWEP:SecondaryAttack()
 	
 	self.NextSecondaryAttack = CurTime() + 0.3
 	
+	if(ScopeLevel == 0) then
+		if(SERVER) then
+			self.Owner:SetFOV( 35, 0 )
+		end
+ 		ScopeLevel = 1
+	else
+		if(SERVER) then
+			self.Owner:SetFOV( 0, 0 )
+		end
+		ScopeLevel = 0
+	end
+
 end
 
 function SWEP:OnRestore()
@@ -197,5 +230,5 @@ end
 
 SWEP.Primary.Cone = 0.02
 
-SWEP.IronSightsPos = Vector (-3, -7, 1)
-SWEP.IronSightsAng = Vector (-2, 1.4, 0)
+SWEP.IronSightsPos = Vector (-3.15, -5.2, 0.91)
+SWEP.IronSightsAng = Vector (0.1, 1.2, 0)

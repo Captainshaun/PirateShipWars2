@@ -25,8 +25,8 @@ end
 SWEP.HoldType			= "grenade"
 SWEP.ViewModel			= "models/powdergrenade/v_powdergrenade_blue.mdl"
 SWEP.WorldModel			= "models/powdergrenade/w_powdergrenade.mdl"
-SWEP.Category 			= "PSW Weapons"  
-SWEP.Spawnable 			= true                					
+SWEP.Category 			= "Pirate Ship Wars 2"  
+SWEP.Spawnable 			= true               					
 SWEP.AdminSpawnable 	= true                          		
 SWEP.UseHands			= true									
 SWEP.AutoSwitchTo 		= true                           		       

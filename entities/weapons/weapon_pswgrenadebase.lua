@@ -42,8 +42,8 @@ SWEP.detonate_timer = 5
 
 SWEP.DeploySpeed = 1.5
 
-AccessorFuncDT( SWEP, "pin_pulled", "Pin")
-AccessorFuncDT( SWEP, "throw_time", "ThrowTime")
+AccessorFunc( SWEP, "pin_pulled", "Pin")
+AccessorFunc( SWEP, "throw_time", "ThrowTime")
 
 AccessorFunc(SWEP, "det_time", "DetTime")
 

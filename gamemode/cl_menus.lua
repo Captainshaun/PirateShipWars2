@@ -572,7 +572,7 @@ function Options(ply)
 		end
 	end
     Enableplayerslives:SizeToContents()
-	TestingForm:AddItem( Enableplayerslives )]]--
+	TestingForm:AddItem( Enableplayerslives )
 	
 	local CategoryContentFive = vgui.Create( "DNumSlider" )
     CategoryContentFive:SetText( "Players Lives (On Next Round)" )
@@ -585,7 +585,7 @@ function Options(ply)
 		net.SendToServer()
 	end
     CategoryContentFive:SizeToContents()
-	TestingForm:AddItem( CategoryContentFive )
+	TestingForm:AddItem( CategoryContentFive )]]--
 	
 	local CategoryContentSix = vgui.Create( "DNumSlider" )
     CategoryContentSix:SetText( "Max Rounds" )

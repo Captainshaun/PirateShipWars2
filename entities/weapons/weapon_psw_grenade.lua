@@ -15,7 +15,7 @@ end
 
 SWEP.ViewModel       	= "models/weapons/keg.mdl"
 SWEP.WorldModel         = "models/weapons/w_keg/w_keg.mdl"
-SWEP.Category 			= "PSW Weapons"                					
+SWEP.Category 			= "Pirate Ship Wars 2"    					
 SWEP.AdminSpawnable 	= true                          		
 SWEP.UseHands			= true									
 SWEP.AutoSwitchTo 		= true  
@@ -53,8 +53,8 @@ SWEP.detonate_timer = 5
 
 SWEP.DeploySpeed = 1.5
 
-AccessorFuncDT( SWEP, "pin_pulled", "Pin")
-AccessorFuncDT( SWEP, "throw_time", "ThrowTime")
+AccessorFunc( SWEP, "pin_pulled", "Pin")
+AccessorFunc( SWEP, "throw_time", "ThrowTime")
 
 AccessorFunc(SWEP, "det_time", "DetTime")
 
@@ -269,10 +269,6 @@ end
 function SWEP:CanPrimaryAttack()
 
    if ( self.Owner:WaterLevel() > 0 ) then
-      return false
-   end
-
-   if ( self.Owner.cannoning == 1 ) then
       return false
    end
 

@@ -13,11 +13,11 @@ end
 SWEP.HoldType				= "shotgun" --maybe server-only
 SWEP.ViewModel				= "models/brownbess/v_brownbess.mdl"
 SWEP.WorldModel				= "models/brownbess/w_brownbess.mdl"
-SWEP.Category 			= "PSW Weapons"                					
-SWEP.AdminSpawnable 	= true                          		
+SWEP.Category 			= "Pirate Ship Wars 2"                					
+SWEP.AdminSpawnable 	= true 
+SWEP.Spawnable 			= false                         		
 SWEP.UseHands			= true									
-SWEP.AutoSwitchTo 		= true                           		
-SWEP.Spawnable 			= true   
+SWEP.AutoSwitchTo 		= true                           		   
 SWEP.DrawCrosshair 		= true 
 SWEP.Weight				= 5                         
 --list.Add("NPCUsableWeapons", {class = "weapon_psw_musket2", title = SWEP.PrintName or ""});

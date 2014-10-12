@@ -1,11 +1,14 @@
 AddCSLuaFile()
 
-ENT.Type = "anim"
+ENT.Type 			= "anim"
+ENT.PrintName		= "Powder Keg"
+ENT.Category 		= "Pirate Ship Wars 2"
+
+ENT.Spawnable			= false
+ENT.AdminSpawnable		= true
 
 if CLIENT then
-	
 	killicon.Add("psw_grenade", "HUD/keg", Color(255,255,255,255))
-
 end
 
 function ENT:PhysicsCollide(data,phys)
@@ -19,7 +22,6 @@ function ENT:PhysicsCollide(data,phys)
 		phys:ApplyForceCenter(impulse)
 	end
 end
-
 
 function ENT:Initialize()
 
@@ -72,9 +74,5 @@ function ENT:Think()
 			explode:Spawn() -- this actually spawns the explosion
 			explode:Activate()
 		end
-		--[[if (CLIENT) then
-			local pos = self:GetPos()
-			--Explosion( pos, self:EyeAngles():Forward(), Color( 190, 40, 0, 255 ) );
-		end]]--
 	end
 end
