@@ -203,12 +203,12 @@ function SWEP:SecondaryAttack()
 	
 	if(ScopeLevel == 0) then
 		if(SERVER) then
-			self.Owner:SetFOV( 35, 0 )
+			self.Owner:SetFOV( 55, 0.3 )
 		end
  		ScopeLevel = 1
 	else
 		if(SERVER) then
-			self.Owner:SetFOV( 0, 0 )
+			self.Owner:SetFOV( 0, 0.3 )
 		end
 		ScopeLevel = 0
 	end

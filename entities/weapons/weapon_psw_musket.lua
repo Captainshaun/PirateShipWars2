@@ -39,7 +39,7 @@ SWEP.Secondary.Ammo			= "none"
 
 function SWEP:PrimaryAttack()
 	ScopeLevel = 0
-	self.Owner:SetFOV( 0, 0 )
+	self.Owner:SetFOV( 0, 0.4 )
 	self.Weapon:SetNetworkedBool( "Ironsights", false )
  
 	if ( !self:CanPrimaryAttack() ) then return end
@@ -209,12 +209,12 @@ function SWEP:SecondaryAttack()
 	
 	if(ScopeLevel == 0) then
 		if(SERVER) then
-			self.Owner:SetFOV( 35, 0 )
+			self.Owner:SetFOV( 35, 0.4 )
 		end
  		ScopeLevel = 1
 	else
 		if(SERVER) then
-			self.Owner:SetFOV( 0, 0 )
+			self.Owner:SetFOV( 0, 0.4 )
 		end
 		ScopeLevel = 0
 	end
@@ -230,5 +230,8 @@ end
 
 SWEP.Primary.Cone = 0.02
 
-SWEP.IronSightsPos = Vector (-3.15, -5.2, 0.91)
+SWEP.IronSightsPos = Vector (-2.74, 14, 0.88)
 SWEP.IronSightsAng = Vector (0.1, 1.2, 0)
+
+--SWEP.IronSightsPos = Vector (-3.135, -5.2, 0.91)
+--SWEP.IronSightsAng = Vector (0.1, 1.2, 0)
