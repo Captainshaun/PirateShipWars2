@@ -1,31 +1,29 @@
 Pirate Ship Wars 2
 ==================
-**Termy58** co-lead Programmer, co-owner.
-
-**Captainshaun** for help with creating new maps, cannon/helm models, and for fixing up some code.
-
-
-
-**PSW 1** 
-
-Original by **EmpV**
-
-**Metroid48** co-lead Programmer, co-owner
-
-**Termy58** co-lead Programmer, co-owner
-
-**Communist Pancake** updated for GMOD 13 compatiability
-
-An unknown (probably not very large) amount of work by **VertisticINC**
-
-
-Gmod thread: http://facepunch.com/showthread.php?t=1424402
-
+[color]Pirate Ship Wars[/color] v2 Gmod xx 2014
 Workshop Gamemode: http://steamcommunity.com/sharedfiles/filedetails/?id=313671383
 Workshop Content: http://steamcommunity.com/sharedfiles/filedetails/?id=313668966
-Workshop Entities For Sandbox: http://steamcommunity.com/sharedfiles/filedetails/?id=319299625
+
+Terminal58
+Captainshaun
+
+[color]Pirate Ship Wars[/color] v1 Gmod 10 2007
+Workshop Gamemode: http://steamcommunity.com/sharedfiles/filedetails/?id=124918997
+Workshop Content: http://steamcommunity.com/sharedfiles/filedetails/?id=124918666
+https://github.com/cpancake/PirateShipWars
+
+Metroid48
+Termy58
+
+[color]Pirate Ship Wars[/color] v1 Gmod 9 2006
+http://www.gamefront.com/files/4948686/Pirate_Ship_Wars
+
+EmpV
+Robbis_1
 
 Mapping Tools: https://github.com/Captainshaun/PirateShipWars2MappingTools
+
+Workshop Entities For Sandbox: http://steamcommunity.com/sharedfiles/filedetails/?id=319299625
 
 Changelog
 ---------
