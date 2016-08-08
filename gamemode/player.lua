@@ -153,6 +153,11 @@ function GM:PlayerInitialSpawn( ply )
 	
 end
 
+function ResetCamera(ply)
+	local vec1 = ply:EyeAngles()
+	ply:SetEyeAngles(Angle(vec1.p, vec1.y, 0))
+end
+
 function GM:PlayerSpawn( ply )
 	if (GAMEMODE.round_state == ROUND_ACTIVE) then
 		ply:UnSpectate()
@@ -164,7 +169,10 @@ function GM:PlayerSpawn( ply )
 		ply:SetAngles(Angle(0, pang.y, 0))
 		GAMEMODE:PlayerLoadout( ply )
 		GAMEMODE:PlayerSetModel( ply )
-		GAMEMODE:SetPlayerSpeed( ply, 250, 300 )	
+		GAMEMODE:SetPlayerSpeed( ply, 250, 300 )
+		
+		timer.Simple(0.5, function() ResetCamera(ply) end)
+		
 		if ply:Team() == TEAM_SPECTATE then
 			ply:Spectate(OBS_MODE_ROAMING)
 			return
